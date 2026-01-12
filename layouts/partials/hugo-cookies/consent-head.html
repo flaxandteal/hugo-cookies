@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ "css/cookie-consent.css" | relURL }}">
 <script>
     const scripts = [];
     const cookies = [];
@@ -51,7 +52,7 @@
     function acceptSomeConsentScripts(consentValue) {
         createCookie('consent-settings',consentValue,31);
         setConsentInputs(consentValue);
-        document.querySelectorAll('.govuk-cookie-banner').forEach(elt => { elt.style.display = 'none'; });
+        document.querySelectorAll('.govuk-cookie-banner').forEach(elt => { elt.classList.add('consent-hidden'); });
         document.getElementById('consent-overlay').classList.remove('active');
         loadConsentScripts(consentValue);
     }
@@ -104,7 +105,7 @@
             setConsentInputs(consentValue);
             loadConsentScripts(consentValue);
         } else {
-            document.querySelectorAll('.govuk-cookie-banner').forEach(elt => { elt.style.display = 'block'; });
+            document.querySelectorAll('.govuk-cookie-banner').forEach(elt => { elt.classList.remove('consent-hidden'); });
         }
         var elements = document.querySelectorAll('.manage-consent');
         elements.forEach(function(el) {
